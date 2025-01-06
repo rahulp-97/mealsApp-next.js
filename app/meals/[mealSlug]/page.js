@@ -7,13 +7,13 @@ import NotFound from "../not-found";
 function MealDetails(props) {
   const { params } = props;
   const meal = getMeal(params?.mealSlug);
-  if(!meal) return <NotFound />
-  meal.instructions = meal?.instructions?.replace(/\n/g, '<br />');
+  if (!meal) return <NotFound />;
+  meal.instructions = meal?.instructions?.replace(/\n/g, "<br />");
   return (
     <div>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal?.image} fill />
+          <Image alt="meal details image" src={meal?.image} fill />
         </div>
         <div className={classes.headerText}>
           <h1>{meal?.title}</h1>
