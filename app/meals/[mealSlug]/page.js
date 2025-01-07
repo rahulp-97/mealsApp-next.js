@@ -4,6 +4,17 @@ import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import NotFound from "../not-found";
 
+//dynamic meta data
+export async function generateMetadata(props) {
+  const { params } = props;
+  const meal = getMeal(params?.mealSlug);
+  if (!meal) return <NotFound />;
+  return {
+    title: meal?.title,
+    description: meal?.summary
+  }
+};
+
 function MealDetails(props) {
   const { params } = props;
   const meal = getMeal(params?.mealSlug);
